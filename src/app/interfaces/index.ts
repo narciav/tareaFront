@@ -36,7 +36,6 @@ export enum IFeedbackStatus {
 }
 
 export enum IRoleType {
-  admin = "ROLE_ADMIN",
   user = "ROLE_USER",
   superAdmin = 'ROLE_SUPER_ADMIN'
 }
@@ -72,4 +71,21 @@ export interface ISearch {
   pageSize?: number;
   totalElements?: number;
   totalPages?:number;
+}
+
+
+export interface IProducto {
+  id?: number;
+  nombre?: string;
+  descripcion?: string;
+  precio?: number;
+  cantidad?: number;
+  categoria?: ICategoria;
+}
+
+export interface ICategoria {
+  id?: number;
+  nombre?: string;
+  descripcion?: string;
+  productos?: IProducto[];
 }
