@@ -108,6 +108,33 @@ export const routes: Routes = [
           showInSidebar: true
         }
       }
+       {
+    path: 'productos',
+    component: ProductosComponent,
+    data: {
+      authorities: [IRoleType.admin, IRoleType.superAdmin, IRoleType.user],
+      name: 'productos',
+      showInSidebar: true
+    }
+  },
+  {
+    path: 'categorias',
+    component: CategoriasComponent,
+    data: {
+      authorities: [IRoleType.admin, IRoleType.superAdmin, IRoleType.user],
+      name: 'categorias',
+      showInSidebar: true
+    }
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    data: {
+      authorities: [IRoleType.superAdmin],
+      name: 'users',
+      showInSidebar: false
+    }
+  },
     ],
   },
 ];
