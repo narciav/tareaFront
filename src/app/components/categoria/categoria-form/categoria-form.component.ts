@@ -22,13 +22,28 @@ export class CategoriaFormComponent implements OnChanges {
     descripcion: [''],
   });
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (this.categoria) this.form.patchValue(this.categoria);
-    else this.form.reset();
+ngOnChanges(changes: SimpleChanges): void {
+  if (changes['categoria'] && this.categoria) {
+    this.form.patchValue({
+      ...this.categoria,
+      id: this.categoria.id !== undefined && this.categoria.id !== null ? String(this.categoria.id) : null
+    });
+  } else if (changes['categoria'] && !this.categoria) {
+    this.form.reset();
   }
+}
 
-  submit() {
-    if (this.form.value.id) this.update.emit(this.form.value as ICategoria);
-    else this.save.emit(this.form.value as ICategoria);
+submit() {
+  const value = this.form.value;
+  const categoria: ICategoria = {
+    id: value.id ? Number(value.id) : undefined,
+    nombre: value.nombre ?? undefined,
+    descripcion: value.descripcion ?? undefined
+  };
+  if (categoria.id) {
+    this.update.emit(categoria);
+  } else {
+    this.save.emit(categoria);
   }
+}
 }

@@ -1,0 +1,33 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="p-4">
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input id="nombre" formControlName="nombre" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label for="descripcion" class="form-label">Descripción</label>
+    <input id="descripcion" formControlName="descripcion" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label for="precio" class="form-label">Precio</label>
+    <input id="precio" formControlName="precio" type="number" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label for="cantidad" class="form-label">Cantidad</label>
+    <input id="cantidad" formControlName="cantidad" type="number" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label for="categoriaId" class="form-label">Categoría</label>
+    <select id="categoriaId" formControlName="categoriaId" class="form-select">
+      <option value="">Seleccione una categoría</option>
+      <option *ngFor="let categoria of categorias" [value]="categoria.id">
+        {{ categoria.nombre }}
+      </option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Guardar</button>
+</form>

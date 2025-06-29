@@ -1,0 +1,45 @@
+<div class="table-container table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Categoría</th>
+        <th class="text-center" scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (producto of productos; track producto.id) {
+        <tr>
+          <th scope="row">{{ producto.id }}</th>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>{{ producto.precio }}</td>
+          <td>{{ producto.cantidad }}</td>
+          <td>{{ getCategoriaNombre(producto.categoriaId ?? 0) }}</td>
+          <td class="text-center">
+            @if (canEditOrDelete()) {
+              <button (click)="edit.emit(producto)" class="btn btn-warning me-2" type="button">
+                <i class="fas fa-pen"></i>
+              </button>
+              <button (click)="delete.emit(producto)" class="btn btn-danger" type="button">
+                <i class="fas fa-trash"></i>
+              </button>
+            }
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="7">
+            <div class="d-flex justify-content-center align-items-center w-100">
+              <p class="mb-0">No hay productos disponibles</p>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

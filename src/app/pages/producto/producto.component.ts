@@ -5,13 +5,24 @@ import { AuthService } from '../../services/auth.service';
 import { ModalService } from '../../services/modal.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IProducto } from '../../interfaces';
+import { ProductoListComponent } from '../../components/producto/producto-list/producto-list.component';
+import { PaginationComponent } from '../../components/pagination/pagination.component';
+import { ProductoFormComponent } from '../../components/producto/producto-form/producto-form.component';
+import { ModalComponent } from '../../components/modal/modal.component';
+import { LoaderComponent } from '../../components/loader/loader.component';
 
 @Component({
   selector: 'app-productos',
   templateUrl: './producto.component.html',
   styleUrl: './producto.component.scss',
   standalone: true,
-  imports: []
+  imports: [
+    ProductoListComponent,
+    PaginationComponent,
+    ProductoFormComponent,
+    ModalComponent,
+    LoaderComponent
+  ]
 })
 export class ProductosComponent {
   productoService = inject(ProductoService);
@@ -31,6 +42,8 @@ export class ProductosComponent {
     categoriaId: ['', Validators.required],
   });
 
+  selectedProducto: IProducto | null = null;
+
   constructor() {
     this.productoService.search.page = 1;
     this.productoService.getAll();
@@ -40,15 +53,15 @@ export class ProductosComponent {
   saveProducto(producto: IProducto) {
     this.productoService.save(producto);
     this.modalService.closeAll();
+    this.selectedProducto = null;
+    this.productoForm.reset();
   }
 
-  callEdition(producto: IProducto) {
-    this.productoForm.patchValue(producto);
-    this.modalService.displayModal('md', this.addProductoModal);
-  }
 
   updateProducto(producto: IProducto) {
     this.productoService.update(producto);
     this.modalService.closeAll();
+    this.selectedProducto = null;
+    this.productoForm.reset();
   }
 }
