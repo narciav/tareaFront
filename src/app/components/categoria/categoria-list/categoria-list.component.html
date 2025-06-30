@@ -15,13 +15,13 @@
           <td>{{ categoria.nombre }}</td>
           <td>{{ categoria.descripcion }}</td>
           <td *ngIf="canEditOrDelete()">
-            <button (click)="edit.emit(categoria)" class="btn btn-warning me-2" type="button">
-              <i class="fas fa-pen"></i>
-            </button>
-            <button (click)="delete.emit(categoria)" class="btn btn-danger" type="button">
-              <i class="fas fa-trash"></i>
-            </button>
-          </td>
+  <button (click)="edit.emit(categoria)" class="btn btn-warning me-2" type="button">
+    <i class="fas fa-pen"></i>
+  </button>
+  <button (click)="delete.emit(categoria)" class="btn btn-danger" type="button">
+    <i class="fas fa-trash"></i>
+  </button>
+</td>
         </tr>
       } @empty {
         <tr>

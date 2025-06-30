@@ -1,13 +1,14 @@
 import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { ICategoria } from '../../../interfaces';
 import { AuthService } from '../../../services/auth.service';
+import { CommonModule } from '@angular/common'; // <-- Agrega esto
 
 @Component({
   selector: 'app-categoria-list',
   templateUrl: './categoria-list.component.html',
   styleUrl: './categoria-list.component.scss',
   standalone: true,
-  imports: []
+  imports: [CommonModule]
 })
 export class CategoriaListComponent {
   @Input() categorias: ICategoria[] = [];
