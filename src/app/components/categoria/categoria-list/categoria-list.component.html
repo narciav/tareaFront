@@ -10,27 +10,35 @@
     </thead>
     <tbody>
       @for (categoria of categorias; track categoria.id) {
-        <tr>
-          <td>{{ categoria.id }}</td>
-          <td>{{ categoria.nombre }}</td>
-          <td>{{ categoria.descripcion }}</td>
-          <td *ngIf="canEditOrDelete()">
-  <button (click)="edit.emit(categoria)" class="btn btn-warning me-2" type="button">
-    <i class="fas fa-pen"></i>
-  </button>
-  <button (click)="delete.emit(categoria)" class="btn btn-danger" type="button">
-    <i class="fas fa-trash"></i>
-  </button>
-</td>
-        </tr>
+      <tr>
+        <td>{{ categoria.id }}</td>
+        <td>{{ categoria.nombre }}</td>
+        <td>{{ categoria.descripcion }}</td>
+        <td *ngIf="canEditOrDelete()">
+          <button
+            (click)="edit.emit(categoria)"
+            class="btn btn-warning me-2"
+            type="button"
+          >
+            <i class="fas fa-pen"></i>
+          </button>
+          <button
+            (click)="delete.emit(categoria)"
+            class="btn btn-danger"
+            type="button"
+          >
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
+      </tr>
       } @empty {
-        <tr>
-          <td colspan="4">
-            <div class="d-flex justify-content-center align-items-center w-100">
-              <p class="mb-0">No hay categorías disponibles</p>
-            </div>
-          </td>
-        </tr>
+      <tr>
+        <td colspan="4">
+          <div class="d-flex justify-content-center align-items-center w-100">
+            <p class="mb-0">No hay categorías disponibles</p>
+          </div>
+        </td>
+      </tr>
       }
     </tbody>
   </table>

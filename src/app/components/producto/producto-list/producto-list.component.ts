@@ -1,13 +1,13 @@
-import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
-import { IProducto, ICategoria } from '../../../interfaces';
-import { AuthService } from '../../../services/auth.service';
+import { Component, Input, Output, EventEmitter, inject } from "@angular/core";
+import { IProducto, ICategoria } from "../../../interfaces";
+import { AuthService } from "../../../services/auth.service";
 
 @Component({
-  selector: 'app-producto-list',
-  templateUrl: './producto-list.component.html',
-  styleUrl: './producto-list.component.scss',
+  selector: "app-producto-list",
+  templateUrl: "./producto-list.component.html",
+  styleUrl: "./producto-list.component.scss",
   standalone: true,
-  imports: []
+  imports: [],
 })
 export class ProductoListComponent {
   @Input() productos: IProducto[] = [];
@@ -21,6 +21,6 @@ export class ProductoListComponent {
   }
 
   getCategoriaNombre(id: number) {
-    return this.categorias.find(cat => cat.id === id)?.nombre ?? '';
+    return this.categorias.find((cat) => cat.id === id)?.nombre ?? "";
   }
 }
