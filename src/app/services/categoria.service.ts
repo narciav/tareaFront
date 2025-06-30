@@ -12,15 +12,15 @@ export class CategoriaService extends BaseService<ICategoria> {
   public totalItems: any = [];
   private alertService: AlertService = inject(AlertService);
 
-  getAll() {
-    this.findAllWithParams({ page: this.search.page, size: this.search.size }).subscribe({
-      next: (response: any) => {
-        this.search = { ...this.search, ...response.meta };
-        this.totalItems = Array.from({ length: this.search.totalPages ? this.search.totalPages : 0 }, (_, i) => i + 1);
-        this.categoriaListSignal.set(response.data);
-      }
-    });
-  }
+getAll() {
+  this.findAllWithParams({ page: this.search.page, size: this.search.size }).subscribe({
+    next: (response: any) => {
+      this.search = { ...this.search, ...response.meta };
+      this.totalItems = Array.from({ length: this.search.totalPages ? this.search.totalPages : 0 }, (_, i) => i + 1);
+      this.categoriaListSignal.set(response.data); // <-- Aquí debe estar el array de categorías
+    }
+  });
+}
 
   save(categoria: ICategoria) {
     this.add(categoria).subscribe({

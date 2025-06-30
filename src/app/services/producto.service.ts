@@ -12,15 +12,18 @@ export class ProductoService extends BaseService<IProducto> {
   public totalItems: any = [];
   private alertService: AlertService = inject(AlertService);
 
-  getAll() {
-    this.findAllWithParams({ page: this.search.page, size: this.search.size }).subscribe({
-      next: (response: any) => {
+getAll() {
+  this.findAllWithParams({ page: this.search.page, size: this.search.size }).subscribe({
+    next: (response: any) => {
+      const productos = Array.isArray(response) ? response : response.data;
+      this.productoListSignal.set(productos);
+      if (response.meta) {
         this.search = { ...this.search, ...response.meta };
         this.totalItems = Array.from({ length: this.search.totalPages ? this.search.totalPages : 0 }, (_, i) => i + 1);
-        this.productoListSignal.set(response.data);
       }
-    });
-  }
+    }
+  });
+}
 
   save(producto: IProducto) {
     this.add(producto).subscribe({

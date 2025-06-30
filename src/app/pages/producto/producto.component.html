@@ -29,7 +29,7 @@
 <ng-template #addProductoModal>
   <app-modal [hideFooter]="true">
     <div>
-      <app-producto-form
+<app-producto-form
   [producto]="selectedProducto"
   [categorias]="categoriaService.categorias$()"
   (save)="saveProducto($event)"

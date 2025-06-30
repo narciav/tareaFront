@@ -21,12 +21,12 @@
 
   <div class="mb-3">
     <label for="categoriaId" class="form-label">Categoría</label>
-    <select id="categoriaId" formControlName="categoriaId" class="form-select">
-      <option value="">Seleccione una categoría</option>
-      <option *ngFor="let categoria of categorias" [value]="categoria.id">
-        {{ categoria.nombre }}
-      </option>
-    </select>
+<select id="categoriaId" formControlName="categoriaId" class="form-select">
+  <option value="">Seleccione una categoría</option>
+  <option *ngFor="let categoria of categorias" [value]="categoria.id">
+    {{ categoria.nombre }}
+  </option>
+</select>
   </div>
 
   <button type="submit" class="btn btn-primary">Guardar</button>

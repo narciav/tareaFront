@@ -44,11 +44,11 @@ export class ProductosComponent {
 
   selectedProducto: IProducto | null = null;
 
-  constructor() {
-    this.productoService.search.page = 1;
-    this.productoService.getAll();
-    this.categoriaService.getAll();
-  }
+constructor() {
+  this.productoService.search.page = 1;
+  this.productoService.getAll();
+  this.categoriaService.getAll(); 
+}
 
   saveProducto(producto: IProducto) {
     this.productoService.save(producto);
@@ -65,6 +65,7 @@ export class ProductosComponent {
     this.productoForm.reset();
   }
   openAddProductoModal() {
+      console.log('CATEGORIAS EN EL PADRE:', this.categoriaService.categorias$());
   this.selectedProducto = null;
   this.productoForm.reset();
   this.modalService.displayModal('md', this.addProductoModal);
