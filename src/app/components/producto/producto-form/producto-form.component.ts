@@ -40,21 +40,20 @@ export class ProductoFormComponent implements OnChanges {
       this.form.reset();
     }
   }
-
-  submit() {
-    const value = this.form.value;
-    const producto: IProducto = {
-      id: value.id ? Number(value.id) : undefined,
-      nombre: value.nombre ?? undefined,
-      descripcion: value.descripcion ?? undefined,
-      precio: value.precio ? Number(value.precio) : undefined,
-      cantidad: value.cantidad ? Number(value.cantidad) : undefined,
-      categoriaId: value.categoriaId ? Number(value.categoriaId) : undefined
-    };
-    if (producto.id) {
-      this.update.emit(producto);
-    } else {
-      this.save.emit(producto);
-    }
+submit() {
+  const value = this.form.value;
+  const producto: IProducto = {
+    id: value.id ? Number(value.id) : undefined,
+    nombre: value.nombre ?? undefined,
+    descripcion: value.descripcion ?? undefined,
+    precio: value.precio ? Number(value.precio) : undefined,
+    cantidad: value.cantidad ? Number(value.cantidad) : undefined,
+    categoriaId: value.categoriaId ? Number(value.categoriaId) : undefined // <-- conversión a número
+  };
+  if (producto.id) {
+    this.update.emit(producto);
+  } else {
+    this.save.emit(producto);
   }
+}
 }

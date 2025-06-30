@@ -64,6 +64,18 @@ constructor() {
     this.selectedProducto = null;
     this.productoForm.reset();
   }
+  
+callEdition(producto: IProducto) {
+  this.selectedProducto = { ...producto }; // cambia la referencia
+  this.productoForm.patchValue({
+    ...producto,
+    id: producto.id !== undefined && producto.id !== null ? String(producto.id) : null,
+    categoriaId: producto.categoriaId !== undefined && producto.categoriaId !== null ? String(producto.categoriaId) : null,
+    precio: producto.precio !== undefined && producto.precio !== null ? String(producto.precio) : null,
+    cantidad: producto.cantidad !== undefined && producto.cantidad !== null ? String(producto.cantidad) : null
+  });
+  this.modalService.displayModal('md', this.addProductoModal);
+}
   openAddProductoModal() {
   this.selectedProducto = null;
   this.productoForm.reset();

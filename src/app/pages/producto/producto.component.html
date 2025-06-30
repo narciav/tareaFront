@@ -9,12 +9,12 @@
       </div>
     </div>
     <div class="col-12">
-      <app-producto-list
-     
-        (delete)="productoService.delete($event)"
-        [productos]="productoService.productos$()"
-        [categorias]="categoriaService.categorias$()"
-      />
+<app-producto-list
+  [productos]="productoService.productos$()"
+  [categorias]="categoriaService.categorias$()"
+  (edit)="callEdition($event)"
+  (delete)="productoService.delete($event)"
+/>
       @if(productoService.productos$()?.length) {
         <app-pagination
           [service]="productoService"
