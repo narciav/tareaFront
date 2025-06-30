@@ -64,4 +64,9 @@ export class ProductosComponent {
     this.selectedProducto = null;
     this.productoForm.reset();
   }
+  openAddProductoModal() {
+  this.selectedProducto = null;
+  this.productoForm.reset();
+  this.modalService.displayModal('md', this.addProductoModal);
+}
 }

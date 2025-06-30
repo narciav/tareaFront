@@ -3,7 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { ICategoria } from '../../../interfaces';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @Component({
   selector: 'app-categoria-form',
   templateUrl: './categoria-form.component.html',

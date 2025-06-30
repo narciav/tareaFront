@@ -14,15 +14,16 @@
         (delete)="categoriaService.delete($event)"
         [categorias]="categoriaService.categorias$()"
       />
-@if(categoriaService.categorias$().length) {
-  <app-pagination [service]="categoriaService" />
-}
+      @if(categoriaService.categorias$()?.length) {
+        <app-pagination
+          [service]="categoriaService"
+        />
+      }
     </div>
   </div>
 } @loading (minimum 1.5s){
   <app-loader></app-loader>
 }
-
 <ng-template #addCategoriaModal>
   <app-modal [hideFooter]="true">
     <div>
