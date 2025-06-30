@@ -19,7 +19,7 @@
           <td>{{ producto.descripcion }}</td>
           <td>{{ producto.precio }}</td>
           <td>{{ producto.cantidad }}</td>
-          <td>{{ getCategoriaNombre(producto.categoriaId ?? 0) }}</td>
+          <td>{{ producto.categoria?.nombre || getCategoriaNombre(producto.categoriaId ?? 0) }}</td>
           <td class="text-center">
             @if (canEditOrDelete()) {
               <button (click)="edit.emit(producto)" class="btn btn-warning me-2" type="button">

@@ -48,7 +48,8 @@ submit() {
     descripcion: value.descripcion ?? undefined,
     precio: value.precio ? Number(value.precio) : undefined,
     cantidad: value.cantidad ? Number(value.cantidad) : undefined,
-    categoriaId: value.categoriaId ? Number(value.categoriaId) : undefined // <-- conversión a número
+    categoriaId: value.categoriaId ? Number(value.categoriaId) : undefined,
+    categoria: value.categoriaId ? { id: Number(value.categoriaId) } : undefined // <-- agrega esto
   };
   if (producto.id) {
     this.update.emit(producto);
