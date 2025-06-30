@@ -65,7 +65,6 @@ constructor() {
     this.productoForm.reset();
   }
   openAddProductoModal() {
-      console.log('CATEGORIAS EN EL PADRE:', this.categoriaService.categorias$());
   this.selectedProducto = null;
   this.productoForm.reset();
   this.modalService.displayModal('md', this.addProductoModal);

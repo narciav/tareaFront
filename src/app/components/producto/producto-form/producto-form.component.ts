@@ -28,7 +28,6 @@ export class ProductoFormComponent implements OnChanges {
   });
 
   ngOnChanges(changes: SimpleChanges): void {
-      console.log('CATEGORIAS EN FORM:', this.categorias);
     if (changes['producto'] && this.producto) {
       this.form.patchValue({
         ...this.producto,
