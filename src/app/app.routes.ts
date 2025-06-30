@@ -6,12 +6,9 @@ import { UsersComponent } from './pages/users/users.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { AdminRoleGuard } from './guards/admin-role.guard';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { GuestGuard } from './guards/guest.guard';
 import { IRoleType } from './interfaces';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { GamesComponent } from './pages/games/games.component';
-import { OrdersComponent } from './pages/orders/orders.component';
 import { ProductosComponent } from './pages/producto/producto.component';
 import {CategoriasComponent} from './pages/categoria/categoria.component';
 
@@ -57,18 +54,7 @@ export const routes: Routes = [
           showInSidebar: true
         }
       },
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-        data: { 
-          authorities: [
-            IRoleType.superAdmin,
-            IRoleType.user
-          ],
-          name: 'Dashboard',
-          showInSidebar: true
-        }
-      },
+
       {
         path: 'profile',
         component: ProfileComponent,
@@ -79,30 +65,6 @@ export const routes: Routes = [
           ],
           name: 'profile',
           showInSidebar: false
-        }
-      },
-      {
-        path: 'games',
-        component: GamesComponent,
-        data: { 
-          authorities: [
-            IRoleType.superAdmin,
-            IRoleType.user,
-          ],
-          name: 'games',
-          showInSidebar: true
-        }
-      },
-      {
-        path: 'orders',
-        component: OrdersComponent,
-        data: { 
-          authorities: [
-            IRoleType.superAdmin,
-            IRoleType.user,
-          ],
-          name: 'orders',
-          showInSidebar: true
         }
       },
 {
@@ -122,7 +84,7 @@ export const routes: Routes = [
     name: 'Categorías',
     showInSidebar: true
   }
-},
+}
     ],
   },
 ];
