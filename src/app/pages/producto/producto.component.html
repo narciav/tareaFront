@@ -1,0 +1,42 @@
+@defer {
+<div class="row p-4">
+  <div class="col-12">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Productos</h2>
+      <button
+        (click)="openAddProductoModal()"
+        type="button"
+        class="btn btn-primary"
+      >
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+  </div>
+  <div class="col-12">
+    <app-producto-list
+      [productos]="productoService.productos$()"
+      [categorias]="categoriaService.categorias$()"
+      (edit)="callEdition($event)"
+      (delete)="productoService.delete($event)"
+    />
+    @if(productoService.productos$()?.length) {
+    <app-pagination [service]="productoService" />
+    }
+  </div>
+</div>
+} @loading (minimum 1.5s){
+<app-loader></app-loader>
+}
+
+<ng-template #addProductoModal>
+  <app-modal [hideFooter]="true">
+    <div>
+      <app-producto-form
+        [producto]="selectedProducto"
+        [categorias]="categoriaService.categorias$()"
+        (save)="saveProducto($event)"
+        (update)="updateProducto($event)"
+      />
+    </div>
+  </app-modal>
+</ng-template>

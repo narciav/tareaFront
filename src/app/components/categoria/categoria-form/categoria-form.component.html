@@ -1,0 +1,11 @@
+<form [formGroup]="categoriaForm" (ngSubmit)="submit()" class="p-4">
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input id="nombre" formControlName="nombre" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label for="descripcion" class="form-label">Descripción</label>
+    <input id="descripcion" formControlName="descripcion" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
