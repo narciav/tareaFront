@@ -48,6 +48,7 @@ getAll() {
       next: (response: any) => {
         this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
         this.getAll();
+         window.location.reload();
       }
     });
   }
