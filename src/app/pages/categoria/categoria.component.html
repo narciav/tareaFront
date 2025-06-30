@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class="d-flex justify-content-between align-items-center">
         <h2>Categorías</h2>
-        <button (click)="modalService.displayModal('md', addCategoriaModal)" type="button" class="btn btn-primary">
+        <button (click)="openAddCategoriaModal()" type="button" class="btn btn-primary">
           <i class="fas fa-plus"></i>
         </button>
       </div>
@@ -14,11 +14,9 @@
         (delete)="categoriaService.delete($event)"
         [categorias]="categoriaService.categorias$()"
       />
-      @if(categoriaService.categorias$().length) {
-        <app-pagination
-          [service]="categoriaService"
-        />
-      }
+@if(categoriaService.categorias$().length) {
+  <app-pagination [service]="categoriaService" />
+}
     </div>
   </div>
 } @loading (minimum 1.5s){
@@ -29,7 +27,7 @@
   <app-modal [hideFooter]="true">
     <div>
       <app-categoria-form
-        [categoria]="selectedCategoria"
+        [categoriaForm]="categoriaForm"
         (save)="saveCategoria($event)"
         (update)="updateCategoria($event)"
       />

@@ -66,4 +66,10 @@ export class CategoriasComponent {
     this.selectedCategoria = null;
     this.categoriaForm.reset();
   }
+
+openAddCategoriaModal() {
+  this.selectedCategoria = null;
+  this.categoriaForm.reset();
+  this.modalService.displayModal('md', this.addCategoriaModal);
+}
 }
