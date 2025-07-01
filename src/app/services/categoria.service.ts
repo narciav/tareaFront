@@ -38,20 +38,17 @@ export class CategoriaService extends BaseService<ICategoria> {
     });
   }
 
-  save(categoria: ICategoria) {
-    this.add(categoria).subscribe({
-      next: (response: any) => {
-        this.alertService.displayAlert(
-          "success",
-          response.message,
-          "center",
-          "top",
-          ["success-snackbar"]
-        );
-        this.getAll();
-      },
-    });
-  }
+save(categoria: ICategoria) {
+  this.add(categoria).subscribe({
+    next: (response: any) => {
+      this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
+      this.getAll();
+    },
+    error: (err: any) => {
+      this.alertService.displayAlert('error', err?.error?.message || 'Error al agregar categoría', 'center', 'top', ['error-snackbar']);
+    }
+  });
+}
 
   update(categoria: ICategoria) {
     this.editCustomSource(`${categoria.id}`, categoria).subscribe({

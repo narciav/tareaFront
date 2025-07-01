@@ -25,24 +25,29 @@ getAll() {
   });
 }
 
-  save(producto: IProducto) {
-    this.add(producto).subscribe({
-      next: (response: any) => {
-        this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
-        this.getAll();
-      }
-    });
-  }
+save(producto: IProducto) {
+  this.add(producto).subscribe({
+    next: (response: any) => {
+      this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
+      this.getAll();
+    },
+    error: (err: any) => {
+      this.alertService.displayAlert('error', err?.error?.message || 'Error al agregar producto', 'center', 'top', ['error-snackbar']);
+    }
+  });
+}
 
-  update(producto: IProducto) {
-    this.editCustomSource(`${producto.id}`, producto).subscribe({
-      next: (response: any) => {
-        this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
-        this.getAll();
-      }
-    });
-  }
-
+update(producto: IProducto) {
+  this.editCustomSource(`${producto.id}`, producto).subscribe({
+    next: (response: any) => {
+      this.alertService.displayAlert('success', response.message, 'center', 'top', ['success-snackbar']);
+      this.getAll();
+    },
+    error: (err: any) => {
+      this.alertService.displayAlert('error', err?.error?.message || 'Error al actualizar producto', 'center', 'top', ['error-snackbar']);
+    }
+  });
+}
   delete(producto: IProducto) {
     this.delCustomSource(`${producto.id}`).subscribe({
       next: (response: any) => {
